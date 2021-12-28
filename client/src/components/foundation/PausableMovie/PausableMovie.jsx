@@ -37,7 +37,7 @@ const PausableMovie = ({ src }) => {
       const animator = new Animator(reader, frames);
 
       animator.animateInCanvas(el);
-      // animator.onFrame(frames[0]); // なにこれ
+      animator.onFrame(frames[0]); // なにこれ
 
       // 視覚効果 off のとき GIF を自動再生しない
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
