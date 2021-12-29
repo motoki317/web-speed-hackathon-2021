@@ -2,12 +2,12 @@ FROM node:16.13.1
 
 WORKDIR /srv
 
-COPY ./package.json ./yarn.lock ./
+COPY ./package.json ./package-lock.json ./
 COPY ./client/package.json ./client/
 COPY ./server/package.json ./server/
-RUN NODE_ENV=development yarn
+RUN NODE_ENV=development npm ci
 
 COPY . .
-RUN yarn build
+RUN npm run build
 
-ENTRYPOINT ["yarn", "start"]
+ENTRYPOINT ["npm", "run", "start"]
