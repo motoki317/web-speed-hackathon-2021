@@ -36,7 +36,6 @@ const CoveredImage = ({ image }) => {
         src={getImagePath(image.id)}
         width={image.width}
         height={image.height}
-        loading="lazy"
       />
     </div>
   );
