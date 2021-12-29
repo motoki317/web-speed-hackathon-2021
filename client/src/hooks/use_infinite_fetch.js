@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LIMIT = 5;
+const LIMIT = 10;
 
 /**
  * @template T
