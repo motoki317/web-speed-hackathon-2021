@@ -16,7 +16,7 @@ router.use(history());
 
 router.use(serveStatic(UPLOAD_PATH));
 router.use(compression() /* compress image/svg+xml */, serveStatic(PUBLIC_PATH));
-router.use('/', expressStaticGzip(CLIENT_DIST_PATH, { enableBrotli: true }));
+router.use('/', expressStaticGzip(CLIENT_DIST_PATH, { enableBrotli: true, orderPreference: ['br', 'gzip'] }));
 
 const genPublicSoundMetas = async () => {
     console.log('generating sound public metas')
