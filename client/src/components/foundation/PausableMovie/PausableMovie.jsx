@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '../FontAwesomeIcon';
 /**
  * @typedef {object} Props
  * @property {string} src
+ * @property {string} importance
  */
 
 /**
