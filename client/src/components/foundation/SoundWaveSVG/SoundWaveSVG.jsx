@@ -2,18 +2,19 @@ import React from 'react';
 
 /**
  * @typedef {object} Props
+ * @property {boolean} isLoading
  * @property {{ max: number, peaks: number[] }} meta
  */
 
 /**
  * @type {React.VFC<Props>}
  */
-const SoundWaveSVG = ({ meta }) => {
+const SoundWaveSVG = ({ isLoading, meta }) => {
   const uniqueIdRef = React.useRef(Math.random().toString(16));
   const [{ max, peaks }, setPeaks] = React.useState({ max: 0, peaks: [] });
 
   React.useEffect(() => {
-    setPeaks(meta);
+    if (!isLoading) setPeaks(meta);
   }, [meta]);
 
   return (

@@ -39,10 +39,6 @@ const SoundPlayer = ({ sound }) => {
     });
   }, []);
 
-  if (isLoading) {
-    return null;
-  }
-
   return (
     <div className="flex items-center justify-center w-full h-full bg-gray-300">
       <audio ref={audioRef} loop={true} onTimeUpdate={handleTimeUpdate} src={getSoundPath(sound.id)} preload='none' />
@@ -62,7 +58,7 @@ const SoundPlayer = ({ sound }) => {
           <AspectRatioBox aspectHeight={1} aspectWidth={10}>
             <div className="relative w-full h-full">
               <div className="absolute inset-0 w-full h-full">
-                <SoundWaveSVG meta={meta} />
+                <SoundWaveSVG meta={meta} isLoading={isLoading} />
               </div>
               <div
                 className="absolute inset-0 w-full h-full bg-gray-300 opacity-75"
