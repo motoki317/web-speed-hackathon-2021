@@ -2,6 +2,7 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FontminPlugin = require('fontmin-webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
 const zlib = require('zlib');
@@ -42,14 +43,16 @@ const config = {
         test: /\.css$/i,
         use: [
           { loader: MiniCssExtractPlugin.loader },
-          { loader: 'css-loader', options: { url: false } },
+          { loader: 'css-loader' },
           { loader: 'postcss-loader' },
         ],
       },
+      { test: /\.woff2?$/i, type: 'asset' },
     ],
   },
   output: {
     filename: 'scripts/[name].js',
+    assetModuleFilename: 'assets/[hash][ext][query]',
     path: DIST_PATH,
   },
   plugins: [
@@ -88,6 +91,9 @@ const config = {
       },
       threshold: 10240,
       minRatio: 0.8,
+    }),
+    new FontminPlugin({
+      autodetect: true, // automatically pull unicode characters from CSS
     }),
   ],
   resolve: {
