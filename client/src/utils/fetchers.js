@@ -1,16 +1,6 @@
 import axios from 'axios';
 
 /**
- * @param {string} url
- * @returns {Promise<ArrayBuffer>}
- */
-async function fetchBinary(url) {
-  return axios.get(url, {
-    responseType: 'arraybuffer'
-  }).then((res) => res.data);
-}
-
-/**
  * @template T
  * @param {string} url
  * @returns {Promise<T>}
@@ -49,4 +39,4 @@ async function sendJSON(url, data) {
   }).then((res) => res.data);
 }
 
-export { fetchBinary, fetchJSON, sendFile, sendJSON };
+export { fetchJSON, sendFile, sendJSON };

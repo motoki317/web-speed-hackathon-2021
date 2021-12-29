@@ -1,22 +1,14 @@
-import sharp from 'sharp';
-
 /**
  * @param {Buffer} buffer
- * @param {object} options
- * @param {number} [options.extension]
- * @param {number} [options.height]
- * @param {number} [options.width]
  * @returns {Promise<Uint8Array>}
  */
-async function convertImage(buffer, options) {
-  return sharp(buffer)
-    .resize({
-      fit: 'cover',
-      height: options.height,
-      width: options.width,
-    })
-    .toFormat(options.extension ?? 'jpeg')
-    .toBuffer();
+async function convertImage(buffer) {
+  // Pure ESM modules
+  const imagemin = (await import('imagemin')).default;
+  const imageminWebp = (await import('imagemin-webp')).default;
+  return imagemin.buffer(buffer, {
+    plugins: [imageminWebp()]
+  }).then((b) => Uint8Array.from(b))
 }
 
-export { convertImage };
+export {convertImage};

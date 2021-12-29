@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 const UserProfileHeader = ({ user }) => {
   const [averageColor, setAverageColor] = React.useState(null);
 
+  // TODO: 重そう
   // 画像の平均色を取得します
   /** @type {React.ReactEventHandler<HTMLImageElement>} */
   const handleLoadImage = React.useCallback((ev) => {
@@ -25,7 +26,7 @@ const UserProfileHeader = ({ user }) => {
 
   return (
     <header className="relative">
-      <div className="h-32 bg-gray-300" style={{ backgroundColor: averageColor }}></div>
+      <div className="h-32 bg-gray-300" style={{backgroundColor: averageColor}}/>
       <div className="absolute left-2/4 m-0 w-28 h-28 bg-gray-300 border border-gray-300 rounded-full overflow-hidden transform -translate-x-1/2 -translate-y-1/2 sm:w-32 sm:h-32">
         <img alt="" crossOrigin="anonymous" onLoad={handleLoadImage} src={getProfileImagePath(user.profileImage.id)} width="100%" height="100%" />
       </div>
