@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useFetch } from '../../../hooks/use_fetch';
-import {fetchBinary, fetchJSON} from '../../../utils/fetchers';
+import { fetchJSON } from '../../../utils/fetchers';
 import { getSoundPath, getSoundMetaPath } from '../../../utils/get_path';
 import { AspectRatioBox } from '../AspectRatioBox';
 import { FontAwesomeIcon } from '../FontAwesomeIcon';
