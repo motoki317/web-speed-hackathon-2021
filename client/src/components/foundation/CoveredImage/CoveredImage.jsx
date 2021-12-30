@@ -6,14 +6,13 @@ import {getImagePath} from "../../../utils/get_path";
 /**
  * @typedef {object} Props
  * @property {model.Image} image
- * @property {string} importance
  */
 
 /**
  * アスペクト比を維持したまま、要素のコンテンツボックス全体を埋めるように画像を拡大縮小します
  * @type {React.VFC<Props>}
  */
-const CoveredImage = ({ image, importance }) => {
+const CoveredImage = ({ image }) => {
   const [containerSize, setContainerSize] = React.useState({ height: 0, width: 0 });
   /** @type {React.RefCallback<HTMLDivElement>} */
   const callbackRef = React.useCallback((el) => {
@@ -37,7 +36,7 @@ const CoveredImage = ({ image, importance }) => {
         src={getImagePath(image.id)}
         width={image.width}
         height={image.height}
-        importance={importance}
+        loading="lazy"
       />
     </div>
   );

@@ -8,11 +8,10 @@ import { CoveredImage } from '../../foundation/CoveredImage';
 /**
  * @typedef {object} Props
  * @property {Array<Models.Image>} images
- * @property {string} importance
  */
 
 /** @type {React.VFC<Props>} */
-const ImageArea = ({ images, importance }) => {
+const ImageArea = ({ images }) => {
   return (
     <AspectRatioBox aspectHeight={9} aspectWidth={16}>
       <div className="grid gap-1 grid-cols-2 grid-rows-2 w-full h-full border border-gray-300 rounded-lg overflow-hidden">
@@ -28,7 +27,7 @@ const ImageArea = ({ images, importance }) => {
                 'row-span-2': images.length <= 2 || (images.length === 3 && idx === 0),
               })}
             >
-              <CoveredImage image={image} importance={importance} />
+              <CoveredImage image={image} />
             </div>
           );
         })}

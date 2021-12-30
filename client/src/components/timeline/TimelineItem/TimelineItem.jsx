@@ -27,25 +27,6 @@ const isClickedAnchorOrButton = (target, currentTarget) => {
 };
 
 /**
- * Returns load importance from timeline index.
- * @typedef {number} timelineIndex
- * @returns {string}
- */
-const getImportanceFromIndex = (timelineIndex) => {
-  switch (timelineIndex) {
-    case 0:
-    case 1:
-      return 'high'
-    case 2:
-    case 3:
-    case 4:
-      return 'medium'
-    default:
-      return 'low'
-  }
-}
-
-/**
  * @typedef {object} Props
  * @property {Models.Post} post
  * @property {number} idx
@@ -53,7 +34,6 @@ const getImportanceFromIndex = (timelineIndex) => {
 
 /** @type {React.VFC<Props>} */
 const TimelineItem = ({ post, idx }) => {
-  const importance = getImportanceFromIndex(idx);
   const navigate = useNavigate();
 
   /**
@@ -78,7 +58,7 @@ const TimelineItem = ({ post, idx }) => {
             className="block w-12 h-12 bg-gray-300 border border-gray-300 rounded-full hover:opacity-75 overflow-hidden sm:w-16 sm:h-16"
             to={`/users/${post.user.username}`}
           >
-            <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} importance={importance} width="100%" height="100%" />
+            <img alt={post.user.profileImage.alt} src={getProfileImagePath(post.user.profileImage.id)} loading="lazy" width="100%" height="100%" />
           </Link>
         </div>
         <div className="flex-grow flex-shrink min-w-0">
@@ -99,12 +79,12 @@ const TimelineItem = ({ post, idx }) => {
           <p className="text-gray-800 leading-relaxed">{post.text}</p>
           {post.images?.length > 0 ? (
             <div className="relative mt-2 w-full">
-              <ImageArea images={post.images} importance={importance} />
+              <ImageArea images={post.images} />
             </div>
           ) : null}
           {post.movie ? (
             <div className="relative mt-2 w-full">
-              <MovieArea movie={post.movie} importance={importance} />
+              <MovieArea movie={post.movie} />
             </div>
           ) : null}
           {post.sound ? (
