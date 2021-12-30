@@ -15,4 +15,4 @@ const NotFoundContainer = () => {
   );
 };
 
-export { NotFoundContainer };
+export default NotFoundContainer;
